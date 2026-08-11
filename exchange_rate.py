@@ -19,8 +19,6 @@ def get_bdt_to_usd_rate() -> float:
     if _cached_rate is None or (now - _last_fetch_time) > _CACHE_DURATION_SECONDS:
         response = requests.get('https://open.er-api.com/v6/latest/BDT', timeout=5)
         data = response.json()
-        with open('rate.json', 'w', encoding='utf-8') as file:
-            json.dump(data, file, indent=4)
 
         if data['result'] == 'success':
             _cached_rate = data['rates']['USD']

@@ -58,3 +58,38 @@ def list_expenses(data: list, month: str = None) -> None:
             f"${expense['amount']}",
         ])
     print(table)
+
+def update_expense(data:list, expense_id: int, description: str, amount:float) -> float:
+    amount_usd = None
+    if amount is not None:
+        rate = get_rate_with_fallback()
+        amount_usd = round(amount * rate, 2)
+    for expense in data:
+        if expense['id'] == expense_id:
+            if description is not None:
+                expense['description'] = description
+            if amount_usd is not None:
+                expense['amount'] = amount_usd
+            notion_sync.try_sync_update(expense)
+            return expense
+    return None
+
+def delete_expense(data: list, expense_id: int) -> bool:
+    target = next((expense for expense in data if expense['id'] == expense_id), None)
+    if target is None:
+        return False
+    page_id = target.get('notion_page_id')
+    data[:] = [expense for expense in data if expense['id'] != expense_id]
+    notion_sync.try_sync_delete(expense_id, page_id)
+    return True
+ 
+def total_summary(data: list) -> float:
+    return round(sum(expense['amount'] for expense in data), 2)
+ 
+def month_summary(data: list, month: str) -> float:
+    total = 0
+    for expense in data:
+        expense_month = expense['created_at'].split(' ')[0]
+        if expense_month == month[:3].capitalize():
+            total += expense['amount']
+    return round(total, 2)

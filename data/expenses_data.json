@@ -1,9 +1,30 @@
 [
     {
-        "id": 1,
-        "description": "test coffee",
-        "amount": 0.97,
+        "id": 3,
+        "description": "electicity bill",
+        "amount": 32.51,
         "created_at": "Aug 11, 2026",
-        "notion_page_id": "3b9b5221-6c22-817e-bb8f-e24d4ffa5c2f"
+        "notion_page_id": "3b9b5221-6c22-81b7-9f1b-f678145507fd"
+    },
+    {
+        "id": 4,
+        "description": "wifi bill",
+        "amount": 4.29,
+        "created_at": "Aug 11, 2026",
+        "notion_page_id": "3b9b5221-6c22-8123-91f5-c7f1765c1c0f"
+    },
+    {
+        "id": 5,
+        "description": "travel cost",
+        "amount": 4.86,
+        "created_at": "Aug 12, 2026",
+        "notion_page_id": "3b9b5221-6c22-8116-93bc-cdc91c8d19c5"
+    },
+    {
+        "id": 6,
+        "description": "test coffee",
+        "amount": 2.83,
+        "created_at": "Aug 12, 2026",
+        "notion_page_id": "3b9b5221-6c22-814f-ae0d-fd32d1e9e0c2"
     }
 ]

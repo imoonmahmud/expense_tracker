@@ -7,7 +7,8 @@ load_dotenv()
 DATA_DIR = 'data'
 EXPENSES_FILE = os.path.join(DATA_DIR, 'expenses_data.json')
 RATE_FALLBACK_FILE = os.path.join(DATA_DIR, 'last_known_rate.json')
-SYNC_QUEUE_FILE = os.path.json(DATA_DIR, 'sync_queue.json')
+SYNC_QUEUE_FILE = os.path.join(DATA_DIR, 'sync_queue.json')
+BUDGETS_FILE = os.path.join(DATA_DIR, 'budgets.json')
 
 # --- Notion credntials
 NOTION_API_KEY = os.environ.get('NOTION_API_KEY')
@@ -18,3 +19,6 @@ NOTION_TIMEOUT = 5  # seconds
 
 def notion_configured() -> bool:
     return bool(NOTION_API_KEY and NOTION_DATABASE_ID)
+
+def budgets_notion_configured() -> bool:
+    return bool(NOTION_API_KEY and NOTION_BUDGETS_DATABASE_ID)
