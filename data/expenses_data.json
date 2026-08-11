@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "description": "test coffee",
+        "amount": 0.97,
+        "created_at": "Aug 11, 2026",
+        "notion_page_id": null
+    }
+]
