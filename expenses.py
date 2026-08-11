@@ -4,6 +4,7 @@ from datetime import datetime
 from prettytable import PrettyTable
 
 import config
+import notion_sync
 from exchange_rate import get_rate_with_fallback
 
 
@@ -37,4 +38,23 @@ def add_expense(data: list, description: str, amount_tk: float) -> dict:
     }
 
     data.append(expense)
+    notion_sync.try_sync_create(expense)
     return expense
+
+def list_expenses(data: list, month: str = None) -> None:
+    filtered = data
+    if month is not None:
+        filtered = [e for e in filtered if e['created_at'].split(' ')[0] == month[:3].capitalize()]
+    if not filtered:
+        print('No expenses fount.')
+        return
+    table = PrettyTable()
+    table.field_names = ['ID', 'Date', 'Description', 'Amount']
+    for expense in filtered:
+        table.add_row([
+            expense['id'],
+            expense['created_at'],
+            expense['description'],
+            f"${expense['amount']}",
+        ])
+    print(table)
