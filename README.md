@@ -56,22 +56,20 @@ This makes `expense` available from any folder, without needing to activate a vi
 ### Add an expense
 ```bash
 expense add "Lunch" 20
-expense add "Bus fare" 40 -c Transport
+expense add "Bus fare" 40
 ```
 
 ### List expenses
 ```bash
 expense list
 expense list -m August
-expense list -c Food
-expense list -m August -c Food
 ```
 
 ### Update an expense
 ```bash
 expense update 1 "New description"
 expense update 1 -a 25
-expense update 1 "New description" -a 25 -c Food
+expense update 1 "New description" -a 25
 ```
 
 ### Delete an expense
@@ -132,4 +130,4 @@ expense-tracker/
 
 ## Acknowledgements
 
-Core project idea from roadmap.sh — Expense Tracker.
+Core project idea from [roadmap.sh](https://roadmap.sh/projects/expense-tracker) — Expense Tracker.
