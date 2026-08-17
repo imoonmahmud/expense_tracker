@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- File paths
-DATA_DIR = 'data'
+DATA_DIR = os.path.join(os.path.expanduser("~"), ".expense_tracker")
+os.makedirs(DATA_DIR, exist_ok=True) 
 EXPENSES_FILE = os.path.join(DATA_DIR, 'expenses_data.json')
 RATE_FALLBACK_FILE = os.path.join(DATA_DIR, 'last_known_rate.json')
 SYNC_QUEUE_FILE = os.path.join(DATA_DIR, 'sync_queue.json')

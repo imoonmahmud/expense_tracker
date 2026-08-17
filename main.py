@@ -40,7 +40,7 @@ def build_parser() -> argparse.ArgumentParser:
     delete_parser.add_argument('expense_id', type=int)
 
     summary_parser = subparser.add_parser('summary')
-    summary_parser.add_argument('-m' '--month', default=None)
+    summary_parser.add_argument('-m', '--month', default=None)
 
     add_budget_parser = subparser.add_parser('add_budget')
     add_budget_parser.add_argument('budget', type=float)

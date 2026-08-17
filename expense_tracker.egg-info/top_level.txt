@@ -1,0 +1,6 @@
+budgets
+config
+exchange_rate
+expenses
+main
+notion_sync
